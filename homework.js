@@ -138,6 +138,10 @@ async function removeCartItem(cartId) {
 async function clearCart() {
 	// 請實作此函式
 	// 提示：發送 DELETE 請求到 /carts
+	const response = await fetch(`${BASE_URL}/api/livejs/v1/customer/${API_PATH}/carts`,{
+		method : "DELETE"
+	});
+	return await response.json();
 }
 
 // ========================================
@@ -149,12 +153,22 @@ async function clearCart() {
 
 1. HTTP 狀態碼的分類（1xx, 2xx, 3xx, 4xx, 5xx 各代表什麼）
    答：
+	1xx : 收到了，正在處理
+	2XX : 成功!
+	3xx : 改去別的地方
+	4xx : 你寫錯了
+	5xx : Server爆炸了(別人的錯)
 
 2. GET、POST、PATCH、PUT、DELETE 的差異
    答：
-
+	GET : 拿資料回來
+	POST : 把內容(body)送過去
+	PATCH : 只傳送有修改的資料
+	PUT : 整份資料重傳
+	DELETE : 用在移除資料，如:取消訂單、刪除商品
 3. 什麼是 RESTful API？
    答：
+   同網址+不同方法，網址只描述資源，動作交給HTTP方法
 
 
 */
